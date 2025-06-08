@@ -1,0 +1,9 @@
+[project]
+name = "ComfyUI-WR_Pocket_TK"
+description = "ComfyUI工具集 - 包含EVF取景器、尺寸预设和其他实用工具节点"
+version = "1.0.1"
+dependencies = ["opencv-contrib-python", "torchvision", "pillow", "numpy", "aiohttp", "torch"]
+
+[tool.comfy]
+DisplayName = "WR_Pocket_TK 工具集"
+Repository = "https://github.com/[your-username]/ComfyUI-WR_Pocket_TK"

@@ -1,0 +1,147 @@
+{
+  "imageScaleToNormPixels": {
+    "display_name": "图像标准像素缩放-WPTK",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      },
+      "divisible_by": {
+        "name": "整除值"
+      },
+      "scale_by": {
+        "name": "缩放系数"
+      }
+    },
+    "outputs": {
+      "image": {
+        "name": "图像"
+      }
+    }
+  },
+  "SimpleExample": {
+    "display_name": "简单示例节点-WPTK",
+    "inputs": {
+      "text": {
+        "name": "文本"
+      },
+      "number": {
+        "name": "数值"
+      }
+    },
+    "outputs": {
+      "result": {
+        "name": "结果"
+      }
+    }
+  },
+  "EVF": {
+    "display_name": "EVF取景器-WPTK",
+    "inputs": {
+      "image": {
+        "name": "图像"
+      },
+      "horizontal_flip": {
+        "name": "水平翻转"
+      },
+      "vertical_flip": {
+        "name": "垂直翻转"
+      },
+      "rotation_angle": {
+        "name": "旋转角度"
+      },
+      "reset": {
+        "name": "重置"
+      }
+    },
+    "outputs": {
+      "image": {
+        "name": "图像"
+      },
+      "mask": {
+        "name": "遮罩"
+      }
+    }
+  },
+  "SizeManual": {
+    "display_name": "全画幅设置-WPTK",
+    "inputs": {
+      "size_preset": {
+        "name": "尺寸预设"
+      }
+    },
+    "outputs": {
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      }
+    }
+  },
+  "SizeAuto": {
+    "display_name": "尺寸自适应-WPTK",
+    "inputs": {
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      },
+      "upscale_method": {
+        "name": "缩放方法"
+      }
+    },
+    "outputs": {
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      }
+    }
+  },
+  "CustomLatentImageSimpleNode": {
+    "display_name": "尺寸比例预设-WPTK",
+    "inputs": {
+      "width": {
+        "name": "宽度"
+      },
+      "height": {
+        "name": "高度"
+      },
+      "batch_size": {
+        "name": "批次大小"
+      }
+    },
+    "outputs": {
+      "latent": {
+        "name": "潜空间"
+      }
+    }
+  },
+  "CommonValuesNode": {
+    "display_name": "常用值坞-WPTK",
+    "inputs": {
+      "active_value": {
+        "name": "选择值"
+      },
+      "value_A": {
+        "name": "数值A"
+      },
+      "value_B": {
+        "name": "数值B"
+      },
+      "value_C": {
+        "name": "数值C"
+      }
+    },
+    "outputs": {
+      "float_value": {
+        "name": "浮点值"
+      },
+      "int_value": {
+        "name": "整数值"
+      }
+    }
+  }
+} 
