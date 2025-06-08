@@ -1,6 +1,0 @@
-opencv-contrib-python
-torchvision
-pillow
-numpy
-aiohttp
-torch
