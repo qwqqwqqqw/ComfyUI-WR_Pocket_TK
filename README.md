@@ -7,6 +7,9 @@
 # ComfyUI-WR_Pocket_TK
 
 ComfyUI-WR_Pocket_TK是一个图像处理工具集，提供了几个图像类节点。
+ComfyUI-WR_Pocket_TK is an image processing toolkit that provides several image-related nodes.
+
+[English Version](#comfyui-wr_pocket_tk-english-version) || [中文版本](#comfyui-wr_pocket_tk)
 
 ![测试流](https://github.com/user-attachments/assets/49eb77c1-2d12-42bf-a0ad-c4cb32e358c5)
 
@@ -179,3 +182,178 @@ EVF取景器是一个强大的图像预览和裁剪调整节点，具有以下�
 ## 许可证
 
 [MIT License] - 允许自由使用、修改和分发 
+
+---
+
+# ComfyUI-WR_Pocket_TK (English Version)
+
+ComfyUI-WR_Pocket_TK is an image processing toolkit that provides several image-related nodes.
+
+## Main Features
+
+### EVF Viewfinder Node
+
+The EVF Viewfinder is a powerful image preview and cropping adjustment node with the following features:
+
+- **Live Preview**: Directly preview image adjustments in the ComfyUI interface
+- **Image Transformations**: Support for horizontal flip, vertical flip, and rotation angle adjustment
+- **Zoom and Pan**: Image zooming and panning through mouse interaction
+- **Crop Ratio Control**: Control crop ratio through Latent input
+- **Size Selection**: Choose between source size or Latent size output
+- **Single Node Preview**: Support for previewing adjustments without executing the entire workflow
+- **Reset Function**: One-click reset of all adjustment parameters to default state
+
+### Full-Frame Settings
+
+Provides common full-frame photography size presets with the following features:
+
+- **Preset Size Selection**: Includes various common full-frame size ratios like 1024x1536, 2048x3072, etc.
+- **Orientation Toggle**: One-click switch between landscape and portrait modes
+- **AI Model Compatibility**: All sizes are multiples of 8, suitable for various AI models
+
+### Size Adaptation
+
+A utility tool for automatic image size adjustment with the following characteristics:
+
+- **Ratio Preservation**: Automatically calculates and maintains original image ratio with precision up to 1/5000
+- **Area Optimization**: Optimizes output image area, target area approximately 1,048,576 pixels
+- **Minimal Cropping**: Uses minimal necessary cropping to preserve maximum image content
+- **Smart Ratio Processing**: Different processing strategies for simple and complex ratios
+- **High-Quality Scaling**: Uses bicubic interpolation algorithm to ensure image quality
+
+### Size Ratio Presets
+
+Provides common latent space size presets for various AI models:
+
+- **Multiple Presets**: Includes various common size ratios for SDXL and SD1.5
+- **Orientation Toggle**: Support for one-click switching between landscape and portrait
+- **Batch Processing**: Support for setting batch size
+- **Model Adaptation**: Presets include common sizes suitable for SDXL and SD1.5 models
+
+### Standard Pixel Scaling
+
+Provides image scaling functionality according to specific standards:
+
+- **Divisibility Guarantee**: Ensures scaled dimensions are divisible by 8 or 32
+- **Proportional Scaling**: Supports free scaling from 0.01x to 8.0x
+- **High-Quality Interpolation**: Uses bicubic interpolation algorithm to ensure image quality
+
+### Common Values Dock
+
+Provides convenient common value selection functionality:
+
+- **Multi-value Toggle**: Quick switching between A, B, C preset value groups
+- **Dual Output Format**: Simultaneous output of float and integer values
+- **Range Control**: Value range 0-255, precise to two decimal places
+- **Automatic Conversion**: Integer values automatically rounded, no manual conversion needed
+
+## Technical Stack
+
+- **Backend**: Python 3.x
+  - OpenCV: Image processing and transformations
+  - Torch/Torchvision: Tensor operations and high-quality image transformations
+  - PIL (Pillow): Image processing and format conversion
+  - NumPy: Numerical computation and array operations
+  - aiohttp: Asynchronous HTTP server and client for frontend-backend communication
+  - fractions: Fraction calculation for precise ratio processing
+  
+- **Frontend**: JavaScript
+  - Custom WebSocket Communication: Real-time data exchange between frontend and backend
+  - Interactive Image Editing Interface: Support for mouse drag, zoom, and other operations
+  - Real-time Preview Updates: View adjustment effects without page refresh
+  - Localization Support: Multilingual interface (Chinese/English)
+
+## Technical Features
+
+- **Silent Logging System**: Log control system implemented through decorators, reducing unnecessary debug information
+- **Real-time Interaction**: Real-time communication through WebSocket
+- **Single Node Execution**: Preview adjustments without executing the entire workflow
+- **Reset Function**: One-click reset of all adjustment parameters
+- **Multilingual Support**: Interface language switching through JSON files in the locales folder
+- **High-Precision Ratio Calculation**: Precise ratio calculation and maintenance using the fractions library
+
+## Installation
+
+1. Clone or download this repository to your ComfyUI installation directory's `custom_nodes` folder:
+   ```
+   git clone https://github.com/qwqqwqqqw/ComfyUI-WR_Pocket_TK.git
+   ```
+   Or download the ZIP file and extract it to the `custom_nodes` folder
+
+2. Install required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
+
+3. Restart ComfyUI
+
+## Usage
+
+1. Find the "🍉WR_Pocket_TK" category in the node browser
+2. Add the required nodes to your workflow:
+   - **EVF Viewfinder-WPTK**: For image preview and cropping adjustment
+   - **Full-Frame Settings-WPTK**: For selecting full-frame preset sizes
+   - **Size Adaptation-WPTK**: For automatic image size adjustment
+   - **Size Ratio Presets-WPTK**: For creating preset-sized latent spaces
+   - **Standard Pixel Scaling-WPTK**: For scaling images according to specific standards
+   - **Common Values Dock-WPTK**: For quick selection and switching of common values
+3. Connect nodes and set parameters as needed
+4. Execute the workflow or use single node preview function
+
+### EVF Viewfinder Tips
+
+1. Connect image input and optional Latent input
+2. Use mouse to drag and zoom image directly in the preview window
+3. Adjust horizontal/vertical flip and rotation angle parameters
+4. Choose between source size or Latent size output
+5. Use reset button to reset all adjustments
+
+### Size Adaptation Tips
+
+1. Connect the image that needs size adjustment
+2. Node automatically calculates optimal output size while maintaining original ratio
+3. Output image size will be a multiple of 8, suitable for AI model processing
+
+### Size Ratio Presets Tips
+
+1. Select preset size (common sizes for SDXL or SD1.5 models)
+2. Switch between landscape/portrait as needed
+3. Set batch size
+4. Output latent space can be directly connected to generation models
+
+### Full-Frame Settings Tips
+
+1. Select desired size from preset list
+2. Choose landscape or portrait orientation
+3. Output width and height values can be connected to other nodes requiring size parameters
+
+### Common Values Dock Tips
+
+1. Set three different value groups (A, B, C)
+2. Quickly switch between value groups during use
+3. Get both float and integer outputs simultaneously, connect to different parameter types
+
+## Notes
+
+- All image or mask inputs/outputs use tensors of shape B H W C or B H W
+- Node category is "🍉WR_Pocket_TK"
+- Plugin depends on specific versions of Python libraries, ensure all dependencies are correctly installed
+- Compatible with various versions of ComfyUI, supports Windows, Linux, and macOS systems
+
+## Localization Support
+
+This plugin supports bilingual interface (Chinese/English):
+- Chinese interface displays localized node names and parameter names
+- English interface provides internationalization support
+- Language switching through JSON files in the locales folder
+- ComfyUI interface language settings automatically apply to plugin interface
+
+## Project Maintenance
+
+- Project maintained on GitHub: https://github.com/qwqqwqqqw/ComfyUI-WR_Pocket_TK
+- Issues and Pull Requests welcome
+- Regular updates to support the latest version of ComfyUI
+
+## License
+
+[MIT License] - Free to use, modify, and distribute 
