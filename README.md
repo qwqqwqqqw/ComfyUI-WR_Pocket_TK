@@ -10,7 +10,7 @@ ComfyUI-WR_Pocket_TK是一个图像处理工具集，提供了几个图像类节
 
 ComfyUI-WR_Pocket_TK is an image processing toolkit that provides several image-related nodes.
 
-[English Version](#comfyui-wr_pocket_tk-english-version) || [中文版本](#comfyui-wr_pocket_tk)
+[English Version](#comfyui-wr_pocket_tk-english-version) |
 
 ![测试流](https://github.com/user-attachments/assets/49eb77c1-2d12-42bf-a0ad-c4cb32e358c5)
 
