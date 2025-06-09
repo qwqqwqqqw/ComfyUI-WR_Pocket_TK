@@ -3,7 +3,7 @@
 
 # ComfyUI-WR_Pocket_TK
 
-ComfyUI-WR_Pocket_TK是一个为ComfyUI设计的高级图像处理工具集，提供了多种实用节点，包括图像预览、裁剪调整、尺寸预设和潜空间创建等功能。
+ComfyUI-WR_Pocket_TK是一个图像处理工具集，提供了几个图像类节点，包括图像预览、裁剪调整、尺寸预设和潜空间创建等功能。
 
 ## 主要功能
 
