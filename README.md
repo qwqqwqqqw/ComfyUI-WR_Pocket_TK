@@ -1,7 +1,7 @@
 
-![未标题-2_0](https://github.com/user-attachments/assets/9a125e7f-50e9-4e54-b14e-6b511844f197)
+![未标题-2_0](https://github.com/user-attachments/assets/6bb15f57-4d6c-4d29-90db-8c72cb863b5b)
 
-![未标题-2_2](https://github.com/user-attachments/assets/34967506-2469-404b-8592-2153e4e2e32f)
+![未标题-2_1](https://github.com/user-attachments/assets/933a8851-c344-420c-a192-2187a3845712)
 
 
 # ComfyUI-WR_Pocket_TK
