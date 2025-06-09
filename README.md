@@ -1,4 +1,5 @@
-![2382fc2aa777939fb7a95730a7e5e07](https://github.com/user-attachments/assets/e6ab3881-9396-4d9a-9b21-2b1c7a8c2863)
+![2382fc2aa777939fb7a95730a7e5e07](https://github.com/user-attachments/assets/6a5d3b09-b557-4ab9-93bc-e5458e843a8d)
+
 
 # ComfyUI-WR_Pocket_TK
 
