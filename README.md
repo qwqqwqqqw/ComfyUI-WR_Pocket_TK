@@ -189,6 +189,7 @@ EVF取景器是一个强大的图像预览和裁剪调整节点，具有以下�
 # ComfyUI-WR_Pocket_TK (English Version)
 
 ComfyUI-WR_Pocket_TK is an image processing toolkit that provides several image-related nodes.
+| [中文版本](#comfyui-wr_pocket_tk)
 
 ## Main Features
 
