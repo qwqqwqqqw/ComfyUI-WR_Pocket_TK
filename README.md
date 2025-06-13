@@ -6,9 +6,9 @@
 
 # ComfyUI-WR_Pocket_TK
 
-ComfyUI-WR_Pocket_TK是一个图像处理工具集，提供了几个图像类节点。
+ComfyUI-WR_Pocket_TK提供了重定图像尺寸的一系列工具。
 
-ComfyUI-WR_Pocket_TK is an image processing toolkit that provides several image-related nodes.
+ComfyUI-WR_Pocket_TK provides a series of tools for resizing images.
 
 [English Version](#comfyui-wr_pocket_tk-english-version) 
 
@@ -188,7 +188,7 @@ EVF取景器是一个强大的图像预览和裁剪调整节点，具有以下�
 
 # ComfyUI-WR_Pocket_TK (English Version)
 
-ComfyUI-WR_Pocket_TK is an image processing toolkit that provides several image-related nodes.
+ComfyUI-WR_Pocket_TK provides a series of tools for resizing images.
 
 ![未标题-2_1](https://github.com/user-attachments/assets/933a8851-c344-420c-a192-2187a3845712)
 
