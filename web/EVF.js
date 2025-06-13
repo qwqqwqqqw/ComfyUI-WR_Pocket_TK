@@ -71,6 +71,87 @@ app.registerExtension({
                     };
                 }
                 
+                // 添加重置旋转角度按钮，使用固定名称
+                const buttonText = "↻ reset rotation - 💿 -重置旋转角度 ↺";
+                
+                this.addWidget("button", buttonText, null, () => {
+                    // 查找旋转角度控件
+                    const rotationAngleWidget = this.widgets.find(w => w.name === "rotation_angle");
+                    if (rotationAngleWidget) {
+                        // 设置旋转角度为0
+                        rotationAngleWidget.value = 0;
+                        
+                        // 更新原始状态
+                        this.originalState.rotationAngle = 0;
+                        
+                        // 触发回调以更新UI
+                        if (rotationAngleWidget.callback) {
+                            rotationAngleWidget.callback(0);
+                        }
+                        
+                        // 更新预览
+                        this.updatePreview(false);
+                        
+                        console.log("通过按钮重置旋转角度为0");
+                    }
+                }, { width: 220, tooltip: "将旋转角度重置为0" });
+                
+                // 设置重置旋转按钮的样式
+                const resetRotationButton = this.widgets[this.widgets.length - 1];
+                if (resetRotationButton) {
+                    resetRotationButton.computeSize = function(width) {
+                        return [width, 30]; // 固定高度为30像素
+                    };
+                    
+                    // 添加自定义样式
+                    const originalDraw = resetRotationButton.draw;
+                    resetRotationButton.draw = function(ctx, node, width, y, height) {
+                        // 保存当前上下文状态
+                        ctx.save();
+                        
+                        // 绘制按钮背景
+                        ctx.fillStyle = "#3F51B5"; // 蓝色背景
+                        ctx.strokeStyle = "#303F9F"; // 深蓝色边框
+                        ctx.lineWidth = 2;
+                        
+                        const margin = 10;
+                        const x = margin;
+                        const buttonWidth = width - margin * 2;
+                        const buttonHeight = 26;
+                        const radius = 4; // 圆角半径
+                        
+                        // 绘制圆角矩形
+                        ctx.beginPath();
+                        ctx.moveTo(x + radius, y);
+                        ctx.lineTo(x + buttonWidth - radius, y);
+                        ctx.quadraticCurveTo(x + buttonWidth, y, x + buttonWidth, y + radius);
+                        ctx.lineTo(x + buttonWidth, y + buttonHeight - radius);
+                        ctx.quadraticCurveTo(x + buttonWidth, y + buttonHeight, x + buttonWidth - radius, y + buttonHeight);
+                        ctx.lineTo(x + radius, y + buttonHeight);
+                        ctx.quadraticCurveTo(x, y + buttonHeight, x, y + buttonHeight - radius);
+                        ctx.lineTo(x, y + radius);
+                        ctx.quadraticCurveTo(x, y, x + radius, y);
+                        ctx.closePath();
+                        
+                        ctx.fill();
+                        ctx.stroke();
+                        
+                        // 设置文本样式
+                        ctx.fillStyle = "white";
+                        ctx.font = "bold 14px Arial";
+                        ctx.textAlign = "center";
+                        ctx.textBaseline = "middle";
+                        
+                        // 绘制文本
+                        ctx.fillText(this.name, x + buttonWidth / 2, y + buttonHeight / 2);
+                        
+                        // 恢复上下文状态
+                        ctx.restore();
+                        
+                        return buttonHeight + 4; // 返回按钮高度加上一点间距
+                    };
+                }
+                
                 // 添加执行节点按钮
                 this.addWidget("button", "🚀 SL_Preadjustment 单载预调", null, () => {
                     // 执行当前节点
@@ -239,6 +320,107 @@ app.registerExtension({
                         console.log("旋转角度变化:", rotationAngleWidget.value);
                         this.updatePreview(false);
                     };
+                }
+                
+                // 使用事件委托方式为节点添加双击事件处理
+                // 这是一个备份方案，以防直接修改控件的方式失效
+                const setupNodeDblClickHandler = () => {
+                    const node = this;
+                    
+                    // 如果节点DOM元素已存在且未添加过双击事件
+                    if (this.domElement && !this._hasNodeDblClickHandler) {
+                        // 为整个节点添加双击事件监听
+                        this.domElement.addEventListener("dblclick", function(e) {
+                            // 寻找被点击的是否是旋转角度控件
+                            let target = e.target;
+                            let isRotationControl = false;
+                            let rotationContainer = null;
+                            
+                            // 向上查找DOM结构
+                            while (target && target !== node.domElement) {
+                                // 检查title文本
+                                if (target.classList && target.classList.contains("wtitle") && 
+                                    (target.textContent.includes("旋转角度") || target.textContent.includes("Rotation Angle"))) {
+                                    isRotationControl = true;
+                                    rotationContainer = target.parentElement;
+                                    break;
+                                }
+                                target = target.parentElement;
+                            }
+                            
+                            // 如果是旋转角度控件
+                            if (isRotationControl) {
+                                console.log("事件委托: 检测到旋转角度区域双击");
+                                
+                                // 查找旋转角度控件
+                                const rotationAngleWidget = node.widgets.find(w => w.name === "rotation_angle");
+                                if (rotationAngleWidget) {
+                                    // 保存旧值用于日志
+                                    const oldValue = rotationAngleWidget.value;
+                                    
+                                    // 重置旋转角度为0
+                                    rotationAngleWidget.value = 0;
+                                    
+                                    // 更新节点状态
+                                    node.originalState.rotationAngle = 0;
+                                    
+                                    // 查找输入框并更新
+                                    if (rotationContainer) {
+                                        const input = rotationContainer.querySelector("input");
+                                        if (input) {
+                                            input.value = "0";
+                                            // 触发相应事件
+                                            input.dispatchEvent(new Event("change", {bubbles: true}));
+                                            input.dispatchEvent(new Event("input", {bubbles: true}));
+                                        }
+                                    }
+                                    
+                                    // 触发回调
+                                    if (rotationAngleWidget.callback) {
+                                        rotationAngleWidget.callback(0);
+                                    }
+                                    
+                                    // 更新预览
+                                    node.updatePreview(false);
+                                    
+                                    console.log(`旋转角度已从 ${oldValue} 重置为0 (委托处理)`);
+                                    
+                                    // 阻止事件进一步传播
+                                    e.stopPropagation();
+                                    e.preventDefault();
+                                }
+                            }
+                        }, true); // 使用捕获阶段
+                        
+                        // 标记已添加事件处理
+                        this._hasNodeDblClickHandler = true;
+                        console.log("已为节点添加双击事件委托处理器");
+                    }
+                };
+                
+                // 立即尝试设置事件
+                setupNodeDblClickHandler();
+                
+                // 如果DOM元素还未准备好，设置轮询
+                if (!this._hasNodeDblClickHandler) {
+                    // 设置一个轮询，最多检查10次
+                    let checkCount = 0;
+                    const checkInterval = setInterval(() => {
+                        checkCount++;
+                        
+                        // 尝试设置事件
+                        setupNodeDblClickHandler();
+                        
+                        // 如果已设置或检查超过10次，停止轮询
+                        if (this._hasNodeDblClickHandler || checkCount >= 10) {
+                            clearInterval(checkInterval);
+                            if (this._hasNodeDblClickHandler) {
+                                console.log("成功设置双击事件委托处理器");
+                            } else {
+                                console.log("设置双击事件委托处理器失败，已达到最大尝试次数");
+                            }
+                        }
+                    }, 1000); // 每秒检查一次
                 }
                 
                 // 鼠标和触摸事件监听器现在在onAdded函数中添加

@@ -136,7 +136,7 @@ class EVF:
                 "latent": ("LATENT", {"default": None, "label": "Latent(裁切比例)"}),
                 "horizontal_flip": ("BOOLEAN", {"default": False, "label_on": "Horizontal 水平翻转", "label_off": "Horizontal 水平翻转"}),
                 "vertical_flip": ("BOOLEAN", {"default": False, "label_on": "Vertical 垂直翻转", "label_off": "Vertical 垂直翻转"}),
-                "rotation_angle": ("FLOAT", {"default": 0, "min": -180, "max": 180, "step": 1, "display": "slider", "precision": 1, "label": "Rotation Angle 旋转角度"}),
+                "rotation_angle": ("FLOAT", {"default": 0, "min": -180, "max": 180, "step": 0.1, "display": "slider", "precision": 1, "label": "Rotation Angle 旋转角度"}),
             },
             "hidden": {
                 "unique_id": "UNIQUE_ID",
